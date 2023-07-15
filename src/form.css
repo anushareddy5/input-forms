@@ -1,0 +1,91 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2eb9b2;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+}
+
+.form-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #020102;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-checkbox {
+    margin-top: 4px;
+}
+
+.form-radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.form-radio-label {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+    font-size: 16px;
+    color: #555;
+}
+
+.form-radio {
+    margin-right: 6px;
+}
+
+.form-submit {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: #45a049;
+}
