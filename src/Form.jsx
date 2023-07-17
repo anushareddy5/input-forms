@@ -3,12 +3,27 @@ import './Form.css';
 
 const Form = () => {
   const [textInput, setTextInput] = useState('');
+  const [emailInput, setEmailInput] = useState('');
+  const [dateInput, setDateInput] = useState('');
+  const [numberInput, setNumberInput] = useState('');
   const [checkboxInput, setCheckboxInput] = useState(false);
   const [radioInput, setRadioInput] = useState('');
   const [selectInput, setSelectInput] = useState('');
 
   const handleTextChange = (e) => {
     setTextInput(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmailInput(e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    setDateInput(e.target.value);
+  };
+
+  const handleNumberChange = (e) => {
+    setNumberInput(e.target.value);
   };
 
   const handleCheckboxChange = (e) => {
@@ -27,12 +42,19 @@ const Form = () => {
     e.preventDefault();
 
     console.log('Text Input:', textInput);
+    console.log('Email Input:', emailInput);
+    console.log('Date Input:', dateInput);
+    console.log('Number Input:', numberInput);
     console.log('Checkbox Input:', checkboxInput);
     console.log('Radio Input:', radioInput);
     console.log('Select Input:', selectInput);
 
+   
     // Reset the form
     setTextInput('');
+    setEmailInput('');
+    setDateInput('');
+    setNumberInput('');
     setCheckboxInput(false);
     setRadioInput('');
     setSelectInput('');
@@ -52,6 +74,49 @@ const Form = () => {
           className="form-input"
           value={textInput}
           onChange={handleTextChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="email-input" className="form-label">
+          Email Input:
+        </label>
+        <input
+          type="email"
+          id="email-input"
+          className="form-input"
+          value={emailInput}
+          onChange={handleEmailChange}
+        />
+      </div>
+
+      <div className="form-group">
+  <label htmlFor="date-input" className="form-label">
+    Date Input:
+  </label>
+  <input
+    type="text"
+    id="date-input"
+    className="form-input"
+    value={dateInput}
+    onChange={handleDateChange}
+    required
+    pattern="\d{2}/\d{2}/\d{4}"
+    title="Please enter a date in the format mm/dd/yyyy"
+    placeholder="mm/dd/yyyy"
+  />
+</div>
+
+      <div className="form-group">
+        <label htmlFor="number-input" className="form-label">
+          Number Input:
+        </label>
+        <input
+          type="number"
+          id="number-input"
+          className="form-input"
+          value={numberInput}
+          onChange={handleNumberChange}
         />
       </div>
 
