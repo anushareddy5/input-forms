@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import './form.css';
-import InputMask from 'react-input-mask';
+// import InputMask from 'react-input-mask';
+
 
 const isValidEmail = (email) => {
   // Regular expression for email validation
@@ -15,7 +18,7 @@ const Form = () => {
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [confirmPasswordInput, setConfirmPasswordInput] = useState('');
-  const [dateInput, setDateInput] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [numberInput, setNumberInput] = useState('');
   const [checkboxInput, setCheckboxInput] = useState(false);
   const [radioInput, setRadioInput] = useState('');
@@ -58,8 +61,8 @@ const Form = () => {
     setConfirmPasswordInput(e.target.value);
   };
 
-  const handleDateChange = (e) => {
-    setDateInput(e.target.value);
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
   };
 
   const handleNumberChange = (e) => {
@@ -90,7 +93,7 @@ const Form = () => {
       console.log('Email Input:', emailInput);
       console.log('Password Input:', passwordInput);
       console.log('Confirm Password Input:', confirmPasswordInput);
-      console.log('Date Input:', dateInput);
+      console.log('Date Input:', selectedDate);
       console.log('Number Input:', numberInput);
       console.log('Checkbox Input:', checkboxInput);
       console.log('Radio Input:', radioInput);
@@ -103,7 +106,7 @@ const Form = () => {
       setEmailInput('');
       setPasswordInput('');
       setConfirmPasswordInput('');
-      setDateInput('');
+      setSelectedDate(null);
       setNumberInput('');
       setCheckboxInput(false);
       setRadioInput('');
@@ -177,14 +180,8 @@ const Form = () => {
     }
 
     // Validate dateInput
-    if (dateInput.trim() === '') {
+    if (selectedDate === null) {
       newErrors.dateInput = 'The date field is required';
-    } else {
-      const [month, day, year] = dateInput.split('/');
-      const isValidDate = !isNaN(Date.parse(dateInput)) && month <= 12 && year.length === 4;
-      if (!isValidDate) {
-        newErrors.dateInput = 'Please enter a valid date (mm/dd/yyyy)';
-      }
     }
 
     // Validate numberInput
@@ -317,15 +314,16 @@ const Form = () => {
       </div>
 
       <div className="form-group">
+      
         <label htmlFor="date-input" className="form-label">
           Date Input:
         </label>
-        <InputMask
-          mask="99/99/9999"
-          placeholder="mm/dd/yyyy"
-          value={dateInput}
+        <DatePicker
+          id="date-input"
+          selected={selectedDate}
           onChange={handleDateChange}
           className="form-input"
+          placeholderText="Select Date"
         />
         {errors.dateInput && <p className="error-message">{errors.dateInput}</p>}
       </div>
